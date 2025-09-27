@@ -1,0 +1,5 @@
+# .gitignore file (Push code to GitHub)
+
+.env
+node_modules/
+MongoDB_Atlas_online_password.txt

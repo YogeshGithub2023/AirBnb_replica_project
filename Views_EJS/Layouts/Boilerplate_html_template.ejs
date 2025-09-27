@@ -1,0 +1,75 @@
+<!-- Boilerplate_Layouts_Views_EJS
+
+writing Templates in HTML format and whole file will be render -->
+
+<!-- This Boilerplate code mean:- Sample Code that exist in every (.EJS) with HTML based file -->
+
+<!-- Creating Boilerplate Template file -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WanderLust</title>
+
+        <!-- Linking 1st style.css file in this Boilerplate HTML template .ejs file -->
+        <link rel="stylesheet" href="/CSS/Style.css">
+
+        <!-- Here, We are Linking Get Bootstrap All CSS Styling link -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+              rel="stylesheet" 
+              integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" 
+              crossorigin="anonymous"
+        >
+
+        <!-- Adding font awesome CDN link for icon in Navbar -->
+        <link rel="stylesheet" 
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+              integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+              crossorigin="anonymous" 
+              referrerpolicy="no-referrer"
+        />
+
+        <!-- Linking Google fonts Plus akarta sans links -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" 
+              rel="stylesheet"
+        >
+
+        <!-- Linking CDN npm file in this Boilerplate HTML template.ejs -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/starability/starability-minified/starability-all.min.css">
+
+        <!-- Linking Ratings.CSS file in this Boilerplate HTML template.ejs -->
+        <link rel="stylesheet" href="Public/CSS/Ratings.css/">
+
+        <!-- Linking API link MapBox file in this Boilerplate HTML template.ejs -->
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+    </head>
+    <body>
+
+        <!-- Including Navbar -->
+        <%- include("../Includes/Navbar.ejs") %>
+
+        <div class="container"> 
+            <%- include("../Includes/Flash.ejs") %>
+            <%- body %> 
+        </div>
+
+        <!-- Including Footer -->
+        <%- include("../Includes/Footer.ejs") %>
+
+        <!-- Here, We are Linking Get Bootstrap JS Styling link 1 -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+                crossorigin="anonymous">
+        </script>
+
+        <!-- Here, We are Linking Another Get Bootstrap JS Styling link 2 -->
+        <script src="/JS/Script.js"></script>
+    </body>
+</html>
+
+<!-- .............................................................................................................. -->

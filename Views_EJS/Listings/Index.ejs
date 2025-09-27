@@ -1,0 +1,194 @@
+<!-- Index_Listings_Views_EJS
+
+writing Templates in HTML format and whole file will be render 
+-->
+
+<!-- Main Template file of Index Route-->
+
+<!-- we removed Head HTML part as we created header part file for every link in same website -->
+<!-- instead of Header part we use here boilerplate code which we created a dedicated file for header -->
+<% layout("/Layouts/Boilerplate_html_template.ejs") %>
+
+<style>
+
+    /* Element / Type / Tag Selector  */
+    /* important means override for custom styling */
+
+    /* Class Selector */
+    #filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    /* ID Selector */
+    .filter {
+        text-align: center;
+        margin-right: 2rem;
+        margin-top: 2rem;
+        opacity: 0.7;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .filter p {
+        font-size: 0.8rem;;
+    }
+
+    /* Difference between Display none and visibility hidden */
+    .tax-info {
+        display: none;
+    }
+    
+    .tax-toggle {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: 3.25rem;
+        padding: 1rem;
+        margin-left: 2rem;
+        display: flex;
+        align-items: center;
+    }
+</style>
+
+<!-- 1st Div:- for Adding UI icon for filters -->
+<div id="filters">
+    <!-- 1st Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+    </div>
+
+    <!-- 2nd Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+    </div>
+
+    <!-- 3rd Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+    </div>
+
+    <!-- 4th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p>Mountains</p>
+    </div>
+
+    <!-- 5th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-chess-rook"></i></div>
+        <p>Castles</p>
+    </div>
+
+    <!-- 6th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Pools</p>
+    </div>
+
+    <!-- 7th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p>Camping</p>
+    </div>
+
+    <!-- 8th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p>Farms</p>
+    </div>
+
+    <!-- 9th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+    </div>
+
+    <!-- 10th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-igloo"></i></div>
+        <p>Domes</p>
+    </div>
+
+    <!-- 11th Nested Div:- -->
+    <div class="filter">
+        <!-- 1st Nested Nested div -->
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Ship</p>
+    </div>
+
+    <!-- 12th Nested Div:- -->
+    <div class="tax-toggle">
+        <!-- 1st Nested Nested div -->
+        <div class="form-check-reverse form-switch">
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                role="switch" 
+                id="switchCheckDefault"
+            >
+            <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+        </div>
+    </div>
+</div>
+
+<!-- Div 2nd:- -->
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+            <div class="card col listing-card">
+                <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem">
+
+                <div class="card-img-overlay">By Apna College</div>
+                        
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %> </b> <br>
+                        &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                        <i class="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                    </p>
+                </div>
+
+            </div>
+        </a>
+    <% } %>
+</div>
+
+<script>
+    let taxSwitch = document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
+
+        // we need to put loop because it is multiple info, 
+        // and if need to put on single tax then we use loop
+        let taxInfo = document.getElementsByClassName("tax-info");
+
+        // Loop 1:-
+        for(info of taxInfo) {
+
+            // Condition 1:-
+            if(info.style.display != "inline") {
+                info.style.display = "inline";
+            } else {
+                info.style.display = "none";
+            }
+        }
+    });
+</script>
+
+<!-- .............................................................................................................. -->

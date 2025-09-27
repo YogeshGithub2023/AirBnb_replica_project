@@ -1,0 +1,25 @@
+<!-- Flash_EJS_Includes_Views
+
+    writing Templates in HTML format and whole file will be render 
+-->
+
+<!-- we removed Head HTML part as we created header part file for every link in same website -->
+<!-- instead of Header part we use here boilerplate code which we created a dedicated file for header -->
+
+<!-- Condition 1:- -->
+<% if(success && success.length) { %>
+    <div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<!-- Condition 2:- -->
+<% if(error && error.length) { %>
+    <div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+
+<!-- .............................................................................................................. -->

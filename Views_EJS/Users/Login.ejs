@@ -1,0 +1,33 @@
+<!-- Login_Users_Views_EJS
+
+writing Templates in HTML format and whole file will be render -->
+
+<!-- we removed Head HTML part as we created header part file for every link in same website -->
+<!-- instead of Header part we use here boilerplate code which we created a dedicated file for header -->
+<% layout("/Layouts/Boilerplate_html_template.ejs") %>
+
+<div class="row mt-3"> <!-- this mt-3 is bootstrap class, which is add by default mirgin top-->
+    <h1 class="col-6 offset-3">Login</h1>
+    <div class="col-6 offset-3">
+        <form action="/login" method="POST" class="needs-validation" novalidate>
+
+            <!-- Adding Username -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <!-- Created lisitng with object field or object's key -->
+                <input name="username" id="username" type="text" class="form-control" required>
+            </div>
+
+            <!-- Adding Password -->
+             <div class="mb-3">
+                <label for="password" class="form-label">Passowrd</label>
+                <!-- Created lisitng with object field or object's key -->
+                <input name="password" id="password" type="password" class="form-control" required>
+            </div>
+
+            <button class="btn btn-success">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- .............................................................................................................. -->

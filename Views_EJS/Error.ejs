@@ -1,0 +1,15 @@
+<!-- Error_Views_EJS
+
+writing Templates in HTML format and whole file will be render -->
+
+<!-- we removed Head HTML part as we created header part file for every link in same website -->
+<!-- instead of Header part we use here boilerplate code which we created a dedicated file for header -->
+<% layout("/Layouts/Boilerplate_html_template.ejs") %>
+
+<div class="row mt-3">
+  <div class="alert alert-danger col-6 offset-3" role="alert">
+    <p class="alert-heading"> <%= message %> </p>
+  </div>
+</div>
+
+<!-- .............................................................................................................. -->
