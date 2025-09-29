@@ -1,114 +1,126 @@
+<!-- Navbar_EJS_Includes_Views
+
+writing Templates in HTML format and whole file will be render 
+-->
+
+<!-- CSS styling in .ejs file, and we can shift all this styling in our Style.css file -->
+<style>
+
+    /* Element / Type / Tag Selector  */
+    /* important means override for custom styling */
+
+    /* class Selector */
+    .search-btn {
+        background-color: #fe424d;
+        color: #fff;
+        border-radius: 25px;
+        padding: 0 1rem 0 1rem; /* top-right-bottom-left */
+    }
+
+    .search-btn:hover {
+        background-color: #fe424d;
+        color: #fff;
+    }
+
+    .search-btn i {
+        display: inline;
+        margin-right: 0.5rem;
+    }
+
+    .search-inp {
+        border-radius: 25px;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+        font-size: 1rem;
+    }
+</style>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
 
+    <!-- 1st Div -->
     <div class="container-fluid">
-        <!-- Brand -->
-        <a class="navbar-brand" href="/listings">
-            <i class="fa-regular fa-compass"></i>
-        </a>
-
-        <!-- Toggler for Offcanvas (mobile only) -->
+        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+        
+        <!-- Toggler for offcanvas (visible only on mobile) -->
         <button class="navbar-toggler d-md-none" 
                 type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#navbarNavAltMarkup"  
                 data-bs-toggle="offcanvas" 
                 data-bs-target="#offcanvasNavbar" 
                 aria-controls="offcanvasNavbar"
-                aria-label="Toggle navigation">
+            >
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!-- Collapse Navbar for Desktop (md and above) -->
-        <div class="collapse navbar-collapse d-none d-md-flex" id="navbarNavAltMarkup">
+        
+        <!-- 1st Nested Div -->
+        <!-- Standard Navbar Collapse for Desktop (visible only on larger screens) -->
+        <div class="collapse navbar-collapse d-none d-md-block" id="navbarNavAltMarkup">
             
-            <!-- Left Nav Links -->
+            <!-- 1st Nested Nested Div -->
             <div class="navbar-nav">
                 <a class="nav-link" href="/listings">Explore</a>
             </div>
 
-            <!-- Search Form -->
+            <!-- 2nd Nested Nested Div -->
             <div class="navbar-nav ms-auto">
                 <form class="d-flex" role="search">
-                    <input id="inp" 
-                           class="form-control me-2 search-inp" 
-                           type="search" 
-                           placeholder="Search destinations">
-                    <button id="btn" class="btn search-btn" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i> Search
-                    </button>
+                    <input 
+                        id="inp"
+                        class="form-control me-2 search-inp" 
+                        type="search" 
+                        placeholder="Search destinations" 
+                    />
+                    <button id="btn" class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
                 </form>
             </div>
 
-            <!-- Right Nav Links -->
+            <!-- 3rd Nested Nested Div -->
             <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/listings/new">Airbnb your home</a>
 
-                <% if (!currUser) { %>
-                    <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-                    <a class="nav-link" href="/login">
-                        <i class="fa-regular fa-circle-user"></i> <b>Log in</b>
-                    </a>
-                <% } else { %>
+                <!-- Condition 1:- This will check that our User Loggedin or not -->
+                <% if(!currUser) { %>
+                    <a class="nav-link" href="/signup"><b>SignUp</b></a>
+                    <a class="nav-link" href="/login"><i class="fa-regular fa-circle-user"></i><b>Log in</b></a>
+                <% } %> <% if(currUser) { %>
                     <a class="nav-link" href="/logout"><b>Log out</b></a>
                 <% } %>
             </div>
+
         </div>
 
-        <!-- Offcanvas Navbar for Mobile -->
+        <!-- Offcanvas Navbar for Mobile (visible only on smaller screens) -->
         <div class="offcanvas offcanvas-end d-md-none" tabindex="-1" id="offcanvasNavbar"
-             aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <!-- Links -->
-                <div class="navbar-nav">
-                    <a class="nav-link" href="/listings">Explore</a>
-                    <a class="nav-link" href="/listings/new">Airbnb your home</a>
-                </div>
-
-                <!-- Search -->
-                <form class="d-flex my-3" role="search">
-                    <input class="form-control me-2 search-inp" type="search" placeholder="Search destinations">
-                    <button class="btn search-btn" type="submit">
-                        <i class="fa-solid fa-magnifying-glass"></i> Search
-                    </button>
-                </form>
-
-                <!-- Auth -->
-                <% if (!currUser) { %>
-                    <a class="nav-link" href="/signup"><b>Sign Up</b></a>
-                    <a class="nav-link" href="/login">
-                        <i class="fa-regular fa-circle-user"></i> <b>Log in</b>
-                    </a>
-                <% } else { %>
-                    <a class="nav-link" href="/logout"><b>Log out</b></a>
-                <% } %>
-            </div>
+              aria-labelledby="offcanvasNavbarLabel">
+              <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                    <div class="navbar-nav">
+                          <a class="nav-link" href="/listings">Explore</a>
+                          <a class="nav-link" href="/listings/new">Airbnb your home</a>
+                    </div>
+                    <form class="d-flex my-3" role="search">
+                          <input class="form-control me-2 search-inp" type="search"
+                                placeholder="Search destination" />
+                          <button class="btn search-btn" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i> Search
+                          </button>
+                    </form>
+                    <% if (!currUser) { %>
+                        <a class="nav-link" href="/signup" style="display: inline-block;margin-right: 20%;"><b>Signup</b></a>
+                        <a class="nav-link" style="display: inline-block;" href="/login">
+                            <i class="fa-regular fa-circle-user"></i> <b>Login</b>
+                        </a>
+                    <% } else { %>
+                        <a class="nav-link" href="/logout">Logout</a>
+                    <% } %>
+              </div>
         </div>
 
     </div>
 </nav>
 
-<!-- Navbar Custom Styling -->
-<style>
-    .search-btn {
-        background-color: #fe424d;
-        color: #fff;
-        border-radius: 25px;
-        padding: 0 1rem;
-    }
-    .search-btn:hover {
-        background-color: #fe424d;
-        color: #fff;
-    }
-    .search-btn i {
-        display: inline;
-        margin-right: 0.5rem;
-    }
-    .search-inp {
-        border-radius: 25px;
-        padding: 0.5rem 3rem;
-        font-size: 1rem;
-    }
-</style>
+<!-- .............................................................................................................. -->
